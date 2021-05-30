@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "docker:build": "docker build . -t windix/bom-converter",
+    "docker:run": "docker run --rm -p 8080:8080 windix/bom-converter",
+    "docker:scan": "docker scan windix/bom-converter"
   },
   "dependencies": {
     "axios": "^0.21.1",
