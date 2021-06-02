@@ -18,8 +18,11 @@ const convertIcon = bomIcon => {
     case 'light_rain':
     case 'rain':
       return '09d' // chance rain
+    case 'shower':
     case 'showers':
+    case 'light_shower':
     case 'light_showers':
+    case 'heavy_shower':
     case 'heavy_showers':
       return '10d' // rain
     case 'storms':
