@@ -132,8 +132,18 @@ app.get('/forecast/:geohash', async (req, res) => {
 
   const list = []
 
-  for (let i = 0; i < 4; i++) {
+  const forecastRequired = 4
+  let forecastCollected = 0
+
+  let i = 0;
+  while (forecastCollected < forecastRequired) {
     const item = forecast.data[i]
+    i++;
+
+    if (Date.parse(item.time) < Date.now()) {
+      continue;
+    }
+
     list.push({
       dt: Date.parse(item.time) / 1000,
       main: {
@@ -147,6 +157,8 @@ app.get('/forecast/:geohash', async (req, res) => {
         },
       ],
     })
+
+    forecastCollected++;
   }
 
   res.json({
