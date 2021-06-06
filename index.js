@@ -91,7 +91,7 @@ app.get('/weather/:geohash', async (req, res) => {
     weather: [
       {
         description: today.short_text,
-        bomIcon: `${today.icon_descriptor}${today.now.is_night ? '_night' : ''}`,
+        bom_icon: `${today.icon_descriptor}${today.now.is_night ? '_night' : ''}`,
         icon: convertIcon(today.icon_descriptor),
       },
     ],
@@ -142,7 +142,7 @@ app.get('/forecast/:geohash', async (req, res) => {
       },
       weather: [
         {
-          bomIcon: `${item.icon_descriptor}${item.is_night ? '_night' : ''}`,
+          bom_icon: `${item.icon_descriptor}${item.is_night ? '_night' : ''}`,
           icon: convertIcon(item.icon_descriptor),
         },
       ],
