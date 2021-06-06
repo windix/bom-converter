@@ -101,6 +101,7 @@ app.get('/weather/:geohash', async (req, res) => {
       temp_min: today.now.temp_now,
       temp_max: today.now.temp_later,
       humidity: ob.data.humidity,
+      rain_chance: today.rain.chance,
     },
     wind: {
       speed: ob.data.wind.speed_kilometre,
@@ -108,6 +109,8 @@ app.get('/weather/:geohash', async (req, res) => {
       deg: 0,
     },
     timezone: 36000,
+    name: ob.data.station.name,
+    dt: Date.parse(ob.metadata.observation_time) / 100,
   })
 })
 
@@ -149,6 +152,7 @@ app.get('/forecast/:geohash', async (req, res) => {
       main: {
         temp_min: item.temp,
         temp_max: 0, // only get temp from BOM
+        rain_chance: item.rain.chance,
       },
       weather: [
         {
