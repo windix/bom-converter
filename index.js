@@ -110,7 +110,7 @@ app.get('/weather/:geohash', async (req, res) => {
     },
     timezone: 36000,
     name: ob.data.station.name,
-    dt: Date.parse(ob.metadata.observation_time) / 100,
+    dt: Date.parse(ob.metadata.observation_time) / 1000,
   })
 })
 
